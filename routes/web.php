@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [ProductController::class, 'index']);
-
 Route::controller(ProductController::class)
     ->group(function () {
-        Route::get('/', 'index');
-        Route::get('/product/{product:id}', 'show');
+        Route::get('/', 'index')->name('posts');
+        Route::get('/product/{product:id}', 'show')->name('post');
+    });
+
+Route::controller(CategoryController::class)
+    ->group(function () {
+        Route::get('/category/{category:id}', 'show')->name('category');
     });
 
 Route::get('/dashboard', function () {
