@@ -23,7 +23,7 @@ Route::controller(ProductController::class)
 
 Route::controller(CategoryController::class)
     ->group(function () {
-        Route::get('/category/{category:id}', 'show')->name('category');
+        Route::get('/category/{category:id}', 'show')->name('category.show');
     });
 
 Route::get('/dashboard', function () {
